@@ -62,7 +62,7 @@ projeto-integrador-frontend-joao-manoel/
     │
     └── subtitles/
         └── legendas.vtt
-
+````
 
 ## 5. Como executar o projeto
 
@@ -112,5 +112,7 @@ A tabela apresenta onde estão implementados os principais requisitos de desenvo
 - **Nome:** [João Manoel Andrade da Silva]
 - **RGM:** [50006673]
 - **Curso:** [Análise e Desenvolvimento de Sistemas]
+
+---
 
 Projeto desenvolvido como parte das atividades acadêmicas de Desenvolvimento Front-end para Web.

@@ -74,7 +74,34 @@
 
         <!-- PRIMEIRA SEÇÃO -->
         <section id="resultado">
-          <h2>Animais disponíveis para adoção</h2>
+    <h2>Animais disponíveis para adoção</h2>
+
+    <label for="busca">Buscar animal:</label>
+    <input type="text" id="busca" placeholder="Digite o nome ou espécie">
+
+    <button type="button" id="filtroDisponiveis" aria-pressed="false">
+        Mostrar somente disponíveis
+    </button>
+
+    <p id="resumo" aria-live="polite"></p>
+
+    <ul id="lista"></ul>
+
+    <h3>Adicionar novo animal</h3>
+
+    <form id="formAnimal">
+        <label for="nomeAnimal">Nome:</label>
+        <input type="text" id="nomeAnimal" required>
+
+        <label for="especieAnimal">Espécie:</label>
+        <input type="text" id="especieAnimal" required>
+
+        <label for="idadeAnimal">Idade:</label>
+        <input type="number" id="idadeAnimal" min="0" required>
+
+        <button type="submit">Adicionar animal</button>
+    </form>
+</section>
 
             <ul>
                 <li>Cachorros</li>

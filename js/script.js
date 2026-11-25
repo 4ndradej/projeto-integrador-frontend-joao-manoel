@@ -1,136 +1,207 @@
 
-/* Lista de animais disponíveis para adoção */
-const animaisAdocao = [
-    {
-        nome: "Rex",
-        especie: "Cachorro",
-        idade: 3,
-        diasEsperando: 70
-    },
-    {
-        nome: "Mel",
-        especie: "Gato",
-        idade: 2,
-        diasEsperando: 20
-    },
-    {
-        nome: "Bob",
-        especie: "Cachorro",
-        idade: 4,
-        diasEsperando: 45
-    },
-    {
-        nome: "Luna",
-        especie: "Gato",
-        idade: 1,
-        diasEsperando: 80
-    },
-    {
-        nome: "Thor",
-        especie: "Cachorro",
-        idade: 5,
-        diasEsperando: 15
-    }
+/* Lista principal de animais */
+const animais = [
+    { id: 1, nome: "Rex", especie: "Cachorro", idade: 3, disponivel: true },
+    { id: 2, nome: "Mel", especie: "Gato", idade: 2, disponivel: true },
+    { id: 3, nome: "Bob", especie: "Cachorro", idade: 4, disponivel: false },
+    { id: 4, nome: "Luna", especie: "Gato", idade: 1, disponivel: true },
+    { id: 5, nome: "Thor", especie: "Cachorro", idade: 5, disponivel: false }
 ];
 
-/* Calcula a pontuação de espera do animal */
-function calcularPontuacao(diasEsperando, bonus = 0) {
-    return diasEsperando + bonus;
-}
+let proximoId = 6;
+let somenteDisponiveis = false;
 
-/* Classifica o tempo de espera */
-function classificarEspera(pontuacao) {
-    if (pontuacao >= 60) {
-        return "alta";
-    } else if (pontuacao >= 30) {
-        return "media";
+/* Procura os elementos do HTML */
+const lista = document.querySelector("#lista");
+const busca = document.querySelector("#busca");
+const resumo = document.querySelector("#resumo");
+const filtroDisponiveis = document.querySelector("#filtroDisponiveis");
+const formAnimal = document.querySelector("#formAnimal");
+
+/* Cria um item da lista */
+function criarItem(animal) {
+    const item = document.createElement("li");
+    const nome = document.createElement("span");
+    const botaoStatus = document.createElement("button");
+    const botaoRemover = document.createElement("button");
+
+    nome.textContent = animal.nome + " - " + animal.especie +
+        " - " + animal.idade + " anos";
+
+    if (animal.disponivel) {
+        nome.textContent += " - Disponível";
+        botaoStatus.textContent = "Marcar como adotado";
     } else {
-        return "baixa";
+        nome.textContent += " - Adotado";
+        botaoStatus.textContent = "Marcar como disponível";
     }
+
+    botaoStatus.type = "button";
+    botaoStatus.dataset.acao = "status";
+    botaoStatus.dataset.id = animal.id;
+
+    botaoRemover.type = "button";
+    botaoRemover.textContent = "Remover";
+    botaoRemover.dataset.acao = "remover";
+    botaoRemover.dataset.id = animal.id;
+
+    item.append(nome, botaoStatus, botaoRemover);
+
+    return item;
 }
 
-/* Testes das funções */
-console.log(calcularPontuacao(40));
-console.log(calcularPontuacao(40, 10));
+/* Calcula o resumo da lista */
+function calcularResumo(listaFiltrada) {
+    const total = listaFiltrada.length;
 
-console.log(classificarEspera(15));
-console.log(classificarEspera(45));
-console.log(classificarEspera(75));
-
-/* Usa map para calcular e classificar cada animal */
-const animaisProcessados = animaisAdocao.map(function(animal) {
-    const pontuacao = calcularPontuacao(animal.diasEsperando);
+    const disponiveis = listaFiltrada.filter(function(animal) {
+        return animal.disponivel;
+    }).length;
 
     return {
-        ...animal,
-        pontuacao: pontuacao,
-        faixa: classificarEspera(pontuacao)
+        total: total,
+        disponiveis: disponiveis
     };
-});
-
-/* Usa filter para separar os animais com maior espera */
-const animaisPrioritarios = animaisProcessados.filter(function(animal) {
-    return animal.faixa === "alta";
-});
-
-/* Usa reduce para calcular o total e a soma dos dias */
-const resumo = animaisProcessados.reduce(function(total, animal) {
-    total.dias = total.dias + animal.diasEsperando;
-    total.quantidade = total.quantidade + 1;
-
-    return total;
-}, {
-    dias: 0,
-    quantidade: 0
-});
-
-/* Cria o card de cada animal */
-function criarCardAnimal(animal) {
-    const card = document.createElement("div");
-    const titulo = document.createElement("h3");
-    const especie = document.createElement("p");
-    const idade = document.createElement("p");
-    const espera = document.createElement("p");
-
-    titulo.textContent = animal.nome;
-    especie.textContent = "Espécie: " + animal.especie;
-    idade.textContent = "Idade: " + animal.idade + " anos";
-    espera.textContent = "Dias esperando: " + animal.diasEsperando;
-
-    card.classList.add("animal-card");
-    card.classList.add("faixa-" + animal.faixa);
-
-    card.append(titulo, especie, idade, espera);
-
-    return card;
 }
 
-/* Mostra os animais na página */
-function mostrarAnimais() {
-    const resultado = document.querySelector("#resultado");
+/* Escreve o resumo na página */
+function atualizarResumo(listaFiltrada) {
+    const dados = calcularResumo(listaFiltrada);
 
-    /* Confere se a seção existe */
-    if (resultado === null) {
-        console.error("A seção resultado não foi encontrada.");
-    } else {
-        const media = resumo.dias / resumo.quantidade;
+    resumo.textContent =
+        "Animais exibidos: " + dados.total +
+        " | Disponíveis: " + dados.disponiveis;
+}
 
-        const textoResumo = document.createElement("p");
+/* Desenha a lista na página */
+function desenhar() {
+    const textoBusca = busca.value.toLowerCase();
 
-        textoResumo.textContent =
-            "Total de animais: " + resumo.quantidade +
-            " | Média de dias esperando: " + media.toFixed(1) +
-            " | Animais com prioridade alta: " + animaisPrioritarios.length;
+    const animaisFiltrados = animais.filter(function(animal) {
+        const nomeOuEspecie =
+            animal.nome.toLowerCase().includes(textoBusca) ||
+            animal.especie.toLowerCase().includes(textoBusca);
 
-        resultado.append(textoResumo);
+        const disponibilidade =
+            !somenteDisponiveis || animal.disponivel;
 
-        /* Coloca um card para cada animal */
-        animaisProcessados.forEach(function(animal) {
-            const card = criarCardAnimal(animal);
-            resultado.append(card);
-        });
+        return nomeOuEspecie && disponibilidade;
+    });
+
+    lista.replaceChildren();
+
+    animaisFiltrados.forEach(function(animal) {
+        const item = criarItem(animal);
+        lista.append(item);
+    });
+
+    atualizarResumo(animaisFiltrados);
+}
+
+/* Trata os cliques nos botões dos animais */
+function tratarCliqueLista(evento) {
+    const botao = evento.target.closest("button[data-acao]");
+
+    if (botao === null || !lista.contains(botao)) {
+        return;
     }
+
+    const id = Number(botao.dataset.id);
+    const acao = botao.dataset.acao;
+
+    const animal = animais.find(function(item) {
+        return item.id === id;
+    });
+
+    if (animal === undefined) {
+        return;
+    }
+
+    if (acao === "status") {
+        animal.disponivel = !animal.disponivel;
+    }
+
+    if (acao === "remover") {
+        const indice = animais.findIndex(function(item) {
+            return item.id === id;
+        });
+
+        animais.splice(indice, 1);
+    }
+
+    desenhar();
 }
 
-/* Executa a função para mostrar os animais */
-mostrarAnimais();
+/* Ativa o filtro de disponibilidade */
+function alternarFiltro() {
+    somenteDisponiveis = !somenteDisponiveis;
+
+    filtroDisponiveis.setAttribute(
+        "aria-pressed",
+        String(somenteDisponiveis)
+    );
+
+    desenhar();
+}
+
+/* Atualiza a lista quando digitar na busca */
+function buscarAnimal() {
+    desenhar();
+}
+
+/* Adiciona um novo animal */
+function adicionarAnimal(evento) {
+    evento.preventDefault();
+
+    const nome = document.querySelector("#nomeAnimal").value;
+    const especie = document.querySelector("#especieAnimal").value;
+    const idade = Number(document.querySelector("#idadeAnimal").value);
+
+    const novoAnimal = {
+        id: proximoId,
+        nome: nome,
+        especie: especie,
+        idade: idade,
+        disponivel: true
+    };
+
+    proximoId++;
+
+    animais.push(novoAnimal);
+
+    formAnimal.reset();
+
+    desenhar();
+}
+
+/* Inicia os eventos da lista */
+function iniciarLista() {
+    lista.addEventListener("click", tratarCliqueLista);
+}
+
+/* Inicia o filtro de disponibilidade */
+function iniciarFiltro() {
+    filtroDisponiveis.addEventListener("click", alternarFiltro);
+}
+
+/* Inicia a busca */
+function iniciarBusca() {
+    busca.addEventListener("input", buscarAnimal);
+}
+
+/* Inicia o formulário */
+function iniciarFormulario() {
+    formAnimal.addEventListener("submit", adicionarAnimal);
+}
+
+/* Inicia o projeto */
+function iniciar() {
+    iniciarLista();
+    iniciarFiltro();
+    iniciarBusca();
+    iniciarFormulario();
+
+    desenhar();
+}
+
+iniciar();

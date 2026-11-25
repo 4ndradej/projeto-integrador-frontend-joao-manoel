@@ -113,6 +113,4 @@ A tabela apresenta onde estão implementados os principais requisitos de desenvo
 - **RGM:** [50006673]
 - **Curso:** [Análise e Desenvolvimento de Sistemas]
 
----
-
 Projeto desenvolvido como parte das atividades acadêmicas de Desenvolvimento Front-end para Web.

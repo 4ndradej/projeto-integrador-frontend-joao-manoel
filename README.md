@@ -62,7 +62,7 @@ projeto-integrador-frontend-joao-manoel/
     │
     └── subtitles/
         └── legendas.vtt
-
+````
 
 ## 5. Como executar o projeto
 

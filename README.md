@@ -27,7 +27,7 @@ As imagens abaixo mostram a página do projeto em diferentes dispositivos.
 
 ### Versão celular
 
-![Página Adote um Amigo em celular](assets/images/print-celular.png)
+![Página Adote um Amigo em celular](assets/images/print-celular.jpeg)
 
 
 ## 4. Estrutura de pastas
@@ -51,10 +51,10 @@ projeto-integrador-frontend-joao-manoel/
 └── assets/
     │
     ├── images/
-    │   ├── capa.png
+    │   ├── capa.jpg
     │   ├── animais.jpg
     │   ├── print-desktop.png
-    │   └── print-celular.png
+    │   └── print-celular.jpeg
     │
     ├── videos/
     │   ├── video.mp4

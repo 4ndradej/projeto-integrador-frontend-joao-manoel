@@ -1,237 +1,435 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Adote um Amigo</title>
-    
+
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
 
-    <!-- CABEÇALHO -->
-   <header id="cabecalho-principal">
+    <!-- Cabeçalho -->
+    <header id="cabecalho-principal">
         <h1>Adote um Amigo</h1>
-
-        <p>
-            Nosso objetivo é conectar animais que precisam de um lar
-            com pessoas dispostas a oferecer amor e cuidado.
-        </p>
-         <nav>
-        <ul class="menu">
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#animais">Animais</a></li>
-            <li><a href="#formulario">Quero adotar</a></li>
-        </ul>
-    </nav>
+        <p>Encontre um novo amigo e transforme uma vida!</p>
     </header>
 
-    <!-- CONTEÚDO PRINCIPAL -->
+    <!-- Menu de navegação -->
+    <nav class="navbar" aria-label="Navegação principal">
+
+        <a href="#inicio" class="logo">Adote um Amigo</a>
+
+        <button class="menu-hamburguer"
+            type="button"
+            aria-label="Menu de navegação"
+            aria-expanded="false">
+            ☰
+        </button>
+
+        <ul class="menu">
+            <li>
+                <a href="#inicio" class="ativo">Início</a>
+            </li>
+
+            <li class="item-dropdown">
+                <a href="#animais">Animais ▼</a>
+
+                <ul class="dropdown">
+                    <li><a href="#cachorros">Cachorros</a></li>
+                    <li><a href="#gatos">Gatos</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#sobre">Sobre</a>
+            </li>
+
+            <li>
+                <a href="#resultado">Buscar animais</a>
+            </li>
+
+            <li>
+                <a href="#formulario">Quero adotar</a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <!-- Conteúdo principal -->
     <main>
 
-<section id="inicio">
-    <h2>Conheça nossos animais</h2>
+        <!-- Início -->
+        <section id="inicio">
 
-    <p>
-        Conheça alguns animais que estão esperando
-        por uma família. Adote com responsabilidade
-        e transforme uma vida!
-    </p>
-
-    <!-- preload="none": evita baixar o vídeo antes
-         de o visitante decidir reproduzi-lo. -->
-
-    <video
-        controls
-        width="600"
-        poster="assets/images/capa.jpg"
-        preload="none">
-
-        <source
-            src="assets/videos/video.webm"
-            type="video/webm">
-
-        <source
-            src="assets/videos/video.mp4"
-            type="video/mp4">
-
-        <track
-            src="assets/subtitles/legendas.vtt"
-            kind="captions"
-            srclang="pt-BR"
-            label="Português"
-            default>
-
-        Seu navegador não suporta vídeos HTML5.
-
-    </video>
-
-</section>
-
-        <!-- PRIMEIRA SEÇÃO -->
-        <section id="resultado">
-    <h2>Animais disponíveis para adoção</h2>
-
-    <label for="busca">Buscar animal:</label>
-    <input type="text" id="busca" placeholder="Digite o nome ou espécie">
-
-    <button type="button" id="filtroDisponiveis" aria-pressed="false">
-        Mostrar somente disponíveis
-    </button>
-
-    <p id="resumo" aria-live="polite"></p>
-
-    <ul id="lista"></ul>
-
-    <h3>Adicionar novo animal</h3>
-
-    <form id="formAnimal">
-        <label for="nomeAnimal">Nome:</label>
-        <input type="text" id="nomeAnimal" required>
-
-        <label for="especieAnimal">Espécie:</label>
-        <input type="text" id="especieAnimal" required>
-
-        <label for="idadeAnimal">Idade:</label>
-        <input type="number" id="idadeAnimal" min="0" required>
-
-        <button type="submit">Adicionar animal</button>
-    </form>
-</section>
-
-            <ul>
-                <li>Cachorros</li>
-                <li>Gatos</li>
-                <li>Filhotes</li>
-            </ul>
-
-            <img src="assets/images/animais.jpg"
-                 alt="Cachorro e gato juntos aguardando adoção"
-                 width="400">
-            
-              <div class="card">
-            <h3>xupetinha</h3>
-            <p>cadela disponível para adoção.</p>
-            <a href="#formulario" class="botao">Quero adotar</a>
-        </div>
-
-        <div class="card">
-            <h3>xikitinha</h3>
-            <p>Gata disponível para adoção.</p>
-            <a href="#formulario" class="botao">Quero adotar</a>
-        </div>
-
-        </p>
-
-        </section>
-
-        <!-- SEGUNDA SEÇÃO -->
-        <section>
-            <h2>Cuidados com os animais</h2>
-
-            <table border="1">
-                <tr>
-                    <th>Animal</th>
-                    <th>Cuidados necessários</th>
-                </tr>
-
-                <tr>
-                    <td>Cachorro</td>
-                    <td>Vacinação, alimentação e passeios.</td>
-                </tr>
-
-                <tr>
-                    <td>Gato</td>
-                    <td>Vacinação, alimentação e caixa de areia.</td>
-                </tr>
-            </table>
+            <h2>Bem-vindo ao Adote um Amigo!</h2>
 
             <p>
-                Saiba mais sobre proteção animal:
-                <a href="https://www.worldanimalprotection.org.br/"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    World Animal Protection
+                Nosso objetivo é ajudar cães e gatos a encontrarem
+                uma família que ofereça carinho, cuidado e proteção.
+                Adotar é um ato de amor e responsabilidade.
+            </p>
+
+            <img
+                src="assets/images/animais.jpg"
+                alt="Cachorro e gato juntos esperando por uma família"
+                class="imagem-principal">
+
+            <p>
+                <a
+                    href="https://www.adotepetz.com.br/"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Conheça também uma plataforma de adoção
                 </a>
             </p>
+
         </section>
 
-        <!-- TERCEIRA SEÇÃO: FORMULÁRIO -->
-        <section>
-            <h2>Formulário de interesse em adoção</h2>
+        <!-- Sobre o projeto -->
+        <section id="sobre">
+
+            <h2>Sobre a adoção</h2>
 
             <p>
-                Preencha os campos abaixo para demonstrar
-                seu interesse em adotar um animal.
+                A adoção responsável oferece uma nova oportunidade
+                para animais que precisam de um lar. Antes de adotar,
+                é importante considerar os cuidados, a alimentação,
+                o espaço e o tempo necessários.
             </p>
 
-            <form>
+            <ul>
+                <li>Ofereça alimentação adequada.</li>
+                <li>Leve o animal ao veterinário.</li>
+                <li>Ofereça carinho, atenção e segurança.</li>
+                <li>Respeite o tempo de adaptação do animal.</li>
+            </ul>
+
+        </section>
+
+        <!-- Animais -->
+        <section id="animais">
+
+            <h2>Conheça alguns animais</h2>
+
+            <div class="grade-animais">
+
+                <article class="card" id="cachorros">
+                    <h3>Rex</h3>
+                    <p>Espécie: Cachorro</p>
+                    <p>Idade: 3 anos</p>
+                    <p>Um cachorro dócil e brincalhão.</p>
+                    <a href="#formulario" class="botao">Quero adotar</a>
+                </article>
+
+                <article class="card">
+                    <h3>Mel</h3>
+                    <p>Espécie: Gato</p>
+                    <p>Idade: 2 anos</p>
+                    <p>Uma gatinha carinhosa e tranquila.</p>
+                    <a href="#formulario" class="botao">Quero adotar</a>
+                </article>
+
+                <article class="card">
+                    <h3>Bob</h3>
+                    <p>Espécie: Cachorro</p>
+                    <p>Idade: 4 anos</p>
+                    <p>Um cachorro alegre e companheiro.</p>
+                    <a href="#formulario" class="botao">Quero adotar</a>
+                </article>
+
+                <article class="card" id="gatos">
+                    <h3>Luna</h3>
+                    <p>Espécie: Gato</p>
+                    <p>Idade: 1 ano</p>
+                    <p>Uma gatinha muito brincalhona.</p>
+                    <a href="#formulario" class="botao">Quero adotar</a>
+                </article>
+
+                <article class="card">
+                    <h3>Thor</h3>
+                    <p>Espécie: Cachorro</p>
+                    <p>Idade: 5 anos</p>
+                    <p>Um cachorro protetor e amigável.</p>
+                    <a href="#formulario" class="botao">Quero adotar</a>
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- Tabela -->
+        <section id="cuidados">
+
+            <h2>Cuidados necessários</h2>
+
+            <p>Alguns cuidados importantes para os animais:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cuidado</th>
+                        <th>Frequência recomendada</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Alimentação</td>
+                        <td>Diariamente</td>
+                    </tr>
+
+                    <tr>
+                        <td>Água limpa</td>
+                        <td>Todos os dias</td>
+                    </tr>
+
+                    <tr>
+                        <td>Vacinação</td>
+                        <td>Conforme orientação veterinária</td>
+                    </tr>
+
+                    <tr>
+                        <td>Consulta veterinária</td>
+                        <td>Regularmente</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </section>
+
+        <!-- Gráfico SVG -->
+        <section id="grafico">
+
+            <h2>Animais disponíveis por espécie</h2>
+
+            <p>Exemplo ilustrativo da quantidade de animais cadastrados.</p>
+
+            <svg viewBox="0 0 400 180"
+                role="img"
+                aria-labelledby="tituloGrafico descricaoGrafico">
+
+                <title id="tituloGrafico">Gráfico de animais</title>
+
+                <desc id="descricaoGrafico">
+                    Gráfico ilustrativo com três cachorros e dois gatos.
+                </desc>
+
+                <text x="10" y="35">Cachorros</text>
+                <rect x="110" y="18" width="180" height="25" fill="#2e7d32"/>
+                <text x="300" y="37">3</text>
+
+                <text x="10" y="85">Gatos</text>
+                <rect x="110" y="68" width="120" height="25" fill="#ff9800"/>
+                <text x="240" y="87">2</text>
+
+                <text x="10" y="140">Total: 5 animais</text>
+
+            </svg>
+
+        </section>
+
+        <!-- Vídeo -->
+        <section id="video">
+
+            <h2>Conheça a importância da adoção</h2>
+
+            <p>
+                A adoção responsável ajuda animais a encontrarem
+                uma família e um lar seguro.
+            </p>
+
+            <!-- preload none evita carregar o vídeo inteiro antes de o usuário assistir -->
+            <video
+                controls
+                preload="none"
+                poster="assets/images/capa.jpg"
+                width="600">
+
+                <source src="assets/videos/video.mp4" type="video/mp4">
+                <source src="assets/videos/video.webm" type="video/webm">
+
+                <track
+                    src="assets/subtitles/legendas.vtt"
+                    kind="captions"
+                    srclang="pt-BR"
+                    label="Português"
+                    default>
+
+                Seu navegador não consegue reproduzir este vídeo.
+
+            </video>
+
+        </section>
+
+        <!-- Lista dinâmica de animais -->
+        <section id="resultado">
+
+            <h2>Animais disponíveis para adoção</h2>
+
+            <label for="busca">Buscar animal:</label>
+
+            <input
+                type="text"
+                id="busca"
+                placeholder="Digite o nome ou espécie">
+
+            <button
+                type="button"
+                id="filtroDisponiveis"
+                aria-pressed="false">
+                Mostrar somente disponíveis
+            </button>
+
+            <p id="resumo" aria-live="polite">
+                Carregando animais...
+            </p>
+
+            <ul id="lista"></ul>
+
+        </section>
+
+        <!-- Cadastro de novos animais -->
+        <section id="cadastro">
+
+            <h2>Cadastrar um animal</h2>
+
+            <p>Adicione um novo animal à lista de adoção.</p>
+
+            <form id="formAnimal">
 
                 <fieldset>
-                    
-<section id="formulario">
-    <h2>Quero adotar um animal!</h2>
-    <p>Preencha seus dados para demonstrar interesse na adoção.</p>
+                    <legend>Informações do animal</legend>
 
-    <form>
-        <fieldset>
-            <legend>Seus dados</legend>
+                    <label for="nomeAnimal">Nome:</label>
+                    <input
+                        type="text"
+                        id="nomeAnimal"
+                        required>
 
-            <label for="nome">Nome completo:</label>
-            <input type="text" id="nome" name="nome"
-                placeholder="Digite seu nome" required>
+                    <label for="especieAnimal">Espécie:</label>
+                    <input
+                        type="text"
+                        id="especieAnimal"
+                        required>
 
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email"
-                placeholder="Digite seu e-mail" required>
-
-            <label for="telefone">Telefone:</label>
-            <input type="tel" id="telefone" name="telefone"
-                placeholder="Digite seu telefone"
-                pattern="[0-9]{10,11}"
-                title="Digite 10 ou 11 números">
-
-            <label for="idade">Idade:</label>
-            <input type="number" id="idade" name="idade"
-                min="18" max="100" required>
-        </fieldset>
-
-        <fieldset>
-            <legend>Sobre a adoção</legend>
-
-            <label for="animal">Qual animal deseja adotar?</label>
-            <select id="animal" name="animal" required>
-                <option value="">Selecione uma opção</option>
-                <option value="cachorro">Cachorro</option>
-                <option value="gato">Gato</option>
-            </select>
-
-            <label for="motivo">Por que deseja adotar?</label>
-            <textarea id="motivo" name="motivo"
-                rows="4"
-                placeholder="Conte um pouco sobre seu interesse..."></textarea>
-        </fieldset>
-
-        <button type="submit">Enviar formulário</button>
-    </form>
-</section>
-
+                    <label for="idadeAnimal">Idade:</label>
+                    <input
+                        type="number"
+                        id="idadeAnimal"
+                        min="0"
+                        max="30"
+                        required>
 
                 </fieldset>
 
+                <button type="submit">Adicionar animal</button>
+
             </form>
+
+        </section>
+
+        <!-- Formulário de adoção -->
+        <section id="formulario">
+
+            <h2>Quero adotar um animal!</h2>
+
+            <p>
+                Preencha seus dados para demonstrar interesse
+                em realizar uma adoção.
+            </p>
+
+            <form id="formAdocao">
+
+                <fieldset>
+                    <legend>Seus dados</legend>
+
+                    <label for="nomeAdotante">Nome completo:</label>
+                    <input
+                        type="text"
+                        id="nomeAdotante"
+                        name="nome"
+                        placeholder="Digite seu nome"
+                        required>
+
+                    <label for="emailAdotante">E-mail:</label>
+                    <input
+                        type="email"
+                        id="emailAdotante"
+                        name="email"
+                        placeholder="Digite seu e-mail"
+                        required>
+
+                    <label for="telefoneAdotante">Telefone:</label>
+                    <input
+                        type="tel"
+                        id="telefoneAdotante"
+                        name="telefone"
+                        placeholder="Somente números"
+                        pattern="[0-9]{10,11}"
+                        title="Digite 10 ou 11 números">
+
+                    <label for="idadeAdotante">Idade:</label>
+                    <input
+                        type="number"
+                        id="idadeAdotante"
+                        name="idade"
+                        min="18"
+                        max="100"
+                        required>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Sobre a adoção</legend>
+
+                    <label for="animalDesejado">
+                        Qual animal deseja adotar?
+                    </label>
+
+                    <select id="animalDesejado" name="animal" required>
+                        <option value="">Selecione uma opção</option>
+                        <option value="cachorro">Cachorro</option>
+                        <option value="gato">Gato</option>
+                    </select>
+
+                    <label for="motivoAdocao">
+                        Por que deseja adotar?
+                    </label>
+
+                    <textarea
+                        id="motivoAdocao"
+                        name="motivo"
+                        rows="4"
+                        placeholder="Conte um pouco sobre seu interesse">
+                    </textarea>
+
+                </fieldset>
+
+                <button type="submit">Enviar formulário</button>
+
+            </form>
+
         </section>
 
     </main>
 
-    <!-- RODAPÉ -->
+    <!-- Rodapé -->
     <footer>
+
         <p>Adote um Amigo - Incentivando a adoção responsável.</p>
+
+        <p>Projeto Integrador - Desenvolvimento Front-end para Web.</p>
+
     </footer>
-<script src="js/script.js" defer></script>
+
+    <!-- JavaScript -->
+    <script src="js/script.js" defer></script>
+
 </body>
 </html>

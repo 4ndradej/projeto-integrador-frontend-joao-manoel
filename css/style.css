@@ -1,0 +1,498 @@
+
+/* ========================================
+   ESTILOS GERAIS DO PROJETO
+======================================== */
+
+/* Variáveis de cores e espaçamentos */
+:root {
+    --cor-principal: #2e7d32;
+    --cor-secundaria: #1b5e20;
+    --cor-destaque: #ff9800;
+    --cor-fundo: #f4f7f4;
+    --cor-texto: #333333;
+    --cor-branco: #ffffff;
+    --espacamento: 20px;
+    --borda: 8px;
+}
+
+/* Estilo geral da página */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+/* Cabeçalho */
+header {
+    background-color: var(--cor-principal);
+    color: var(--cor-branco);
+    text-align: center;
+    padding: 30px 15px;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1rem;
+}
+
+/* Títulos */
+h2 {
+    color: var(--cor-principal);
+    margin-bottom: 15px;
+}
+
+h3 {
+    color: var(--cor-secundaria);
+    margin-bottom: 10px;
+}
+
+/* Seções */
+section {
+    background-color: var(--cor-branco);
+    margin: var(--espacamento) auto;
+    padding: var(--espacamento);
+    max-width: 1100px;
+    border-radius: var(--borda);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Combinador descendente: aplica estilo aos parágrafos dentro das seções */
+section p {
+    margin-bottom: 12px;
+}
+
+/* Imagem principal */
+.imagem-principal {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: var(--borda);
+}
+
+/* Listas */
+ul {
+    padding-left: 25px;
+}
+
+section li {
+    margin-bottom: 8px;
+}
+
+/* ========================================
+   MENU DE NAVEGAÇÃO
+======================================== */
+
+.navbar {
+    background-color: var(--cor-secundaria);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    color: var(--cor-branco);
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu a {
+    display: block;
+    color: var(--cor-branco);
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Estados dos links */
+.menu a:link {
+    color: var(--cor-branco);
+}
+
+.menu a:visited {
+    color: #e0e0e0;
+}
+
+.menu a:hover {
+    background-color: var(--cor-principal);
+    color: var(--cor-branco);
+}
+
+.menu a:focus-visible {
+    outline: 3px solid var(--cor-destaque);
+    outline-offset: 3px;
+}
+
+.menu a:active {
+    background-color: var(--cor-destaque);
+    color: var(--cor-texto);
+}
+
+/* Link da página ou seção atual */
+.menu a.ativo {
+    background-color: var(--cor-principal);
+    color: var(--cor-branco);
+}
+
+/* Dropdown */
+.item-dropdown {
+    position: relative;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 160px;
+    background-color: var(--cor-secundaria);
+    list-style: none;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 20;
+}
+
+/* Abre o menu ao passar o mouse ou navegar pelo teclado */
+.item-dropdown:hover .dropdown,
+.item-dropdown:focus-within .dropdown {
+    display: block;
+}
+
+.dropdown li {
+    width: 100%;
+}
+
+.dropdown a {
+    padding: 10px;
+}
+
+/* Botão hambúrguer */
+.menu-hamburguer {
+    display: none;
+    background-color: transparent;
+    color: var(--cor-branco);
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* ========================================
+   CARDS DOS ANIMAIS
+======================================== */
+
+.grade-animais {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: var(--cor-branco);
+    border: 1px solid #dddddd;
+    border-radius: var(--borda);
+    padding: 20px;
+    margin: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+/* Diferencia o primeiro card */
+.grade-animais .card:first-child {
+    border-top: 5px solid var(--cor-destaque);
+}
+
+/* Efeito ao passar o mouse */
+.card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s;
+}
+
+/* Botões e links de ação */
+.botao {
+    display: inline-block;
+    background-color: var(--cor-principal);
+    color: var(--cor-branco);
+    text-decoration: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.botao:hover {
+    background-color: var(--cor-secundaria);
+}
+
+/* ========================================
+   TABELA
+======================================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th,
+td {
+    border: 1px solid #cccccc;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--cor-principal);
+    color: var(--cor-branco);
+}
+
+tbody tr:nth-child(even) {
+    background-color: #eeeeee;
+}
+
+/* ========================================
+   GRÁFICO E VÍDEO
+======================================== */
+
+#grafico svg {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin: 20px auto;
+}
+
+#video video {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin: 20px auto;
+    border-radius: var(--borda);
+}
+
+/* ========================================
+   LISTA DINÂMICA DE ANIMAIS
+======================================== */
+
+#lista {
+    list-style: none;
+    padding: 0;
+}
+
+.animal-card {
+    background-color: var(--cor-branco);
+    padding: 15px;
+    margin: 15px 0;
+    border: 1px solid #cccccc;
+    border-radius: var(--borda);
+}
+
+/* Cores de acordo com o tempo de espera */
+.faixa-alta {
+    border-left: 5px solid #c62828;
+}
+
+.faixa-media {
+    border-left: 5px solid #f9a825;
+}
+
+.faixa-baixa {
+    border-left: 5px solid var(--cor-principal);
+}
+
+/* Botões dentro dos cards criados pelo JavaScript */
+.animal-card button {
+    background-color: var(--cor-principal);
+    color: var(--cor-branco);
+    border: none;
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.animal-card button:hover {
+    background-color: var(--cor-secundaria);
+}
+
+/* ========================================
+   FORMULÁRIOS
+======================================== */
+
+form {
+    margin-top: 15px;
+}
+
+fieldset {
+    border: 1px solid #cccccc;
+    border-radius: var(--borda);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+legend {
+    color: var(--cor-principal);
+    font-weight: bold;
+    padding: 0 8px;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbbbbb;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--cor-principal);
+    border-color: var(--cor-principal);
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Botões dos formulários */
+form button {
+    background-color: var(--cor-principal);
+    color: var(--cor-branco);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+form button:hover {
+    background-color: var(--cor-secundaria);
+}
+
+/* Botão de filtro */
+#filtroDisponiveis {
+    background-color: var(--cor-destaque);
+    color: var(--cor-texto);
+    border: none;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#filtroDisponiveis:hover {
+    background-color: #e68900;
+}
+
+/* ========================================
+   RODAPÉ
+======================================== */
+
+footer {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-branco);
+    text-align: center;
+    padding: 25px 15px;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 5px;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        flex-wrap: wrap;
+        padding: 12px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 5px;
+        margin-top: 10px;
+    }
+
+    .menu a {
+        padding: 8px;
+    }
+
+    .dropdown {
+        position: static;
+        width: 100%;
+    }
+
+    .menu-hamburguer {
+        display: block;
+    }
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    section {
+        margin: 12px;
+        padding: 15px;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+
+    th,
+    td {
+        padding: 8px;
+    }
+}
+/* Uso rem nos tamanhos de fonte para facilitar a acessibilidade
+e permitir que o texto acompanhe o tamanho configurado pelo usuário. */
+
+/* Uso transform para movimentar o card sem alterar suas dimensões
+e sem provocar mudanças no layout dos outros elementos. */
+.card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s;
+}
+section ul {
+    list-style-type: disc;
+}
